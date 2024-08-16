@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCC-46th Batch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header h2 {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+
+        .marquee-container {
+            background: #ffcb05;
+            color: #333;
+            padding: 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+        }
+
+        .marquee {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .box {
+            flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #444;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .box:nth-child(1) {
+            background: #007bff;
+        }
+
+        .box:nth-child(2) {
+            background: #dc3545;
+        }
+
+        .box:nth-child(3) {
+            background: #28a745;
+        }
+
+        .box ul {
+            list-style: none;
+        }
+
+        .box ul li {
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .box ul li:hover {
+            text-decoration: underline;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+
+        .popup-content img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .popup-content p {
+            margin-bottom: 10px;
+        }
+
+        .popup-content .social-media {
+            margin-top: 10px;
+        }
+
+        .popup-content .social-media a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .popup-content .social-media a:hover {
+            text-decoration: underline;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .box-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            header h2 {
+                font-size: 16px;
+            }
+
+            .box {
+                padding: 10px;
+            }
+
+            .popup-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Sylhet Cadet College</h1>
+            <h2>46th Batch</h2>
+            <div class="marquee-container">
+                <div class="marquee">Intake (2021-2027)</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container box-container">
+        <div class="box" id="box1">
+            <h3>Titumir House</h3>
+            <ul>
+                <!-- Add 17 student names here, e.g.: -->
+                <li onclick="showPopup('John Doe', 'images/john.jpg', '12345', '01/01/2000', 'Islam', 'Sylhet')">John Doe</li>
+                <!-- Repeat for other students -->
+            </ul>
+        </div>
+        <div class="box" id="box2">
+            <h3>Shahjalal House</h3>
+            <ul>
+                <!-- Add 17 student names here -->
+                <li onclick="showPopup('Alice Johnson', 'images/alice.jpg', '12347', '03/03/2000', 'Hindu', 'Chattogram')">Alice Johnson</li>
+                <!-- Repeat for other students -->
+            </ul>
+        </div>
+        <div class="box" id="box3">
+            <h3>Surma House</h3>
+            <ul>
+                <!-- Add 17 student names here -->
+                <li onclick="showPopup('Charlie Davis', 'images/charlie.jpg', '12349', '05/05/2000', 'Islam', 'Sylhet')">Charlie Davis</li>
+                <!-- Repeat for other students -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <img id="student-image" src="" alt="Student Image">
+            <h2 id="student-name">Student Name</h2>
+            <p>Cadet No: <span id="cadet-no"></span></p>
+            <p>Birthdate: <span id="birthdate"></span></p>
+            <p>Religion: <span id="religion"></span></p>
+            <p>Hometown: <span id="hometown"></span></p>
+            <div class="social-media">
+                <a href="#" id="facebook-link">Facebook</a>
+                <a href="#" id="twitter-link">Twitter</a>
+                <a href="#" id="linkedin-link">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        This website is developed by Mahiur 2425. All rights reserved by @46th Batch of SCC
+    </footer>
+
+    <script>
+        function showPopup(name, image, cadetNo, birthdate, religion, hometown) {
+            document.getElementById('student-name').textContent = name;
+            document.getElementById('student-image').src = image;
+            document.getElementById('cadet-no').textContent = cadetNo;
+            document.getElementById('birthdate').textContent = birthdate;
+            document.getElementById('religion').textContent = religion;
+            document.getElementById('hometown').textContent = hometown;
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
